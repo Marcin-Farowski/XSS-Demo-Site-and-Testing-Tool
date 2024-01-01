@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple XSS Vulnerable Page</title>
+  </head>
+  <body>
+    <h1>XSS Test</h1>
+    <p>Enter your name:</p>
+    <form action="#" method="GET">
+      <input type="text" name="name" />
+      <input type="submit" value="Submit" />
+    </form>
+    <div id="result">Your name is:</div>
+    <script>
+      var name = new URLSearchParams(window.location.search).get("name");
+      if (name) {
+        document.getElementById("result").textContent = "Your name is: " + name;
+      }
+    </script>
+  </body>
+</html>
