@@ -6,7 +6,7 @@
 
 `npm install -g http-server`
 
-Then, navigate to the sample_page folder and run:
+Then, navigate to the vulnerable_page folder and run:
 
 `http-server`
 
@@ -41,6 +41,8 @@ After installing Selenium, run xss_tester.py:
 `python xss_tester.py`
 
 This application tests the Sample Page for XSS vulnerabilities and displays the information in the console.
+
+**You can also test the application's functionality using the example of a page secured against XSS attacks, which is located in the vulnerable_page folder.**
 
 ---
 

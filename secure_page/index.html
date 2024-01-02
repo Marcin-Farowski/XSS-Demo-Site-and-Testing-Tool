@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple XSS Secure Page</title>
+  </head>
+  <body>
+    <h1>XSS Test</h1>
+    <p>Enter your name:</p>
+    <form action="#" method="GET">
+      <input type="text" name="name" />
+      <input type="submit" value="Submit" />
+    </form>
+    <div id="result">Your name is:</div>
+    <script>
+      // Function to sanitize user input
+      function sanitizeInput(str) {
+        var temp = document.createElement("div");
+        temp.textContent = str;
+        return temp.innerHTML;
+      }
+
+      var name = new URLSearchParams(window.location.search).get("name");
+
+      if (name) {
+        // Sanitize the user input to prevent XSS
+        var safeName = sanitizeInput(name);
+
+        // Safely add the sanitized content to the page
+        document.getElementById("result").textContent =
+          "Your name is: " + safeName;
+      }
+    </script>
+  </body>
+</html>
